@@ -1,0 +1,23 @@
+version: 2
+
+updates:
+  - package-ecosystem: uv
+    directory: "/"
+    schedule:
+      interval: weekly
+    # SemVer filtering applies to version updates, not security fixes.
+    allow:
+      - dependency-type: all
+        update-types:
+          - version-update:semver-patch
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    allow:
+      - dependency-type: all
+        update-types:
+          - version-update:semver-patch
+    open-pull-requests-limit: 5
