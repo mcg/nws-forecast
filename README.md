@@ -98,7 +98,7 @@ Run `uv sync --locked --no-dev` once before installing the cron entry. Use the v
 For this checkout, an example daily 7:00 AM entry (`crontab -e`) is:
 
 ```cron
-0 7 * * * /Users/mcg/Devel/forcast/.venv/bin/nws-forecast --env-file /Users/mcg/Devel/forcast/.env >> /Users/mcg/Devel/forcast/forecast.log 2>&1
+0 7 * * * uv run --locked nws-forecast --env-file .env >> forecast.log 2>&1
 ```
 
 Adjust paths for your deployment. Cron's schedule follows the **cron host's timezone**, which may differ from the location timezone. On macOS, do not assume Linux's `CRON_TZ` support; choose the host-local time that corresponds to your desired delivery time. The host must be awake at the scheduled time. Manage log rotation separately and monitor failures using your cron mail or job-monitoring setup.
